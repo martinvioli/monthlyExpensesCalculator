@@ -1,43 +1,43 @@
 import { createContext, useMemo, useState } from "react";
-import ICompraPrimaria from "../interfaces/compra-primaria.interface";
-import ICompraSecundaria from "../interfaces/compra-secundaria.interface";
+import IPrimaryPurchase from "../interfaces/primary-purchase.interface";
+import ISecondaryPurchase from "../interfaces/secondary-purchase.interface";
 
-export interface ICalculadoraContext {
-  comprasPrimarias: ICompraPrimaria[];
-  setComprasPrimarias: React.Dispatch<React.SetStateAction<ICompraPrimaria[]>>;
-  comprasSecundarias: ICompraSecundaria[];
-  setComprasSecundarias: React.Dispatch<
-    React.SetStateAction<ICompraSecundaria[]>
-  >;
+export interface IPurchasesContext {
+	primaryPurchases: IPrimaryPurchase[];
+	setPrimaryPurchases: React.Dispatch<React.SetStateAction<IPrimaryPurchase[]>>;
+	secondaryPurchases: ISecondaryPurchase[];
+	setSecondaryPurchases: React.Dispatch<
+		React.SetStateAction<ISecondaryPurchase[]>
+	>;
 }
 
-export const CalculadoraContext = createContext({} as ICalculadoraContext);
+export const PurchasesContext = createContext({} as IPurchasesContext);
 
-export function CalculadoraProvider({
-  children,
+export function PurchasesProvider({
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  const [comprasPrimarias, setComprasPrimarias] = useState<ICompraPrimaria[]>(
-    []
-  );
-  const [comprasSecundarias, setComprasSecundarias] = useState<
-    ICompraSecundaria[]
-  >([]);
+	const [primaryPurchases, setPrimaryPurchases] = useState<IPrimaryPurchase[]>(
+		[]
+	);
+	const [secondaryPurchases, setSecondaryPurchases] = useState<
+		ISecondaryPurchase[]
+	>([]);
 
-  const providerValue = useMemo(
-    () => ({
-      comprasPrimarias,
-      setComprasPrimarias,
-      comprasSecundarias,
-      setComprasSecundarias,
-    }),
-    [comprasPrimarias, comprasSecundarias]
-  );
+	const providerValue = useMemo(
+		() => ({
+			primaryPurchases,
+			setPrimaryPurchases,
+			secondaryPurchases,
+			setSecondaryPurchases,
+		}),
+		[primaryPurchases, secondaryPurchases]
+	);
 
-  return (
-    <CalculadoraContext.Provider value={providerValue}>
-      {children}
-    </CalculadoraContext.Provider>
-  );
+	return (
+		<PurchasesContext.Provider value={providerValue}>
+			{children}
+		</PurchasesContext.Provider>
+	);
 }

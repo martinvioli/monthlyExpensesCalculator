@@ -5,11 +5,11 @@ import "./index.css";
 import { NextUIProvider } from "@nextui-org/react";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <NextUIProvider>
-      <main>
-        <App />
-      </main>
-    </NextUIProvider>
-  </React.StrictMode>
+	<React.StrictMode>
+		<NextUIProvider>
+			<main className="text-foreground" style={{ width: '100vw', height: '100vh' }}>
+				<App />
+			</main>
+		</NextUIProvider>
+	</React.StrictMode>
 );
