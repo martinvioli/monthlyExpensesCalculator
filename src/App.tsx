@@ -23,19 +23,9 @@ export default function App() {
 						onClose={() => setIsMPOpen(false)}
 						onAccept={() => setIsMPOpen(false)}
 					/>
-					<Divider />
-					<Button color="primary" onPress={() => setIsSecondaryModalOpen(true)}>Agregar compra divisible entre 3</Button>
-					<SecondaryPurchasesTable />
-					<SecondaryPurchaseModal
-						isOpen={isSecondaryModalOpen}
-						onClose={() => setIsSecondaryModalOpen(false)}
-						onAccept={() => setIsSecondaryModalOpen(false)}
-					/>
 				</div>
 				<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '1rem', height: '100%', width: '45%', maxWidth: '45%', backgroundColor: '#E6E5ED', borderRadius: '1rem', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px' }}>
 					<PrimaryPurchasesDisplay />
-					<Divider />
-					<SecondaryPurchasesDisplay />
 				</div>
 			</div>
 		</PurchasesProvider>
